@@ -48,12 +48,12 @@
             {% endif %}
           </td>
           <td>
-            <a href="#">
+            <a href="{% url 'todo:task-update' task.id %}">
               ⚙️
             </a>
           </td>
           <td>
-            <a href="#">
+            <a href="{% url 'todo:task-delete' task.id %}">
               🗑
             </a>
           </td>
