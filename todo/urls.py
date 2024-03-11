@@ -56,7 +56,7 @@ urlpatterns = [
         name="tag-delete"
     ),
     path(
-        "change_status/<int:pk>/",
+        "tasks/<int:pk>/change_status/",
         change_task_status,
         name="change-status"
     )

@@ -1,5 +1,6 @@
 from django.db.models import QuerySet
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 
@@ -13,7 +14,7 @@ class IndexView(generic.ListView):
     template_name = "todo/index.html"
 
     def get_queryset(self) -> QuerySet:
-        queryset = super(IndexView, self).get_queryset()
+        queryset = super().get_queryset()
         queryset = queryset.prefetch_related("tag")
         return queryset
 
@@ -70,7 +71,7 @@ class TagDeleteView(generic.DeleteView):
 
 
 def change_task_status(request: HttpRequest, pk: int) -> HttpResponse:
-    task = Task.objects.get(pk=pk)
+    task = get_object_or_404(Task, pk=pk)
     task.status = not task.status
     task.save()
     return HttpResponseRedirect(reverse_lazy("todo:index"))
