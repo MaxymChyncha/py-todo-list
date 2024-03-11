@@ -1,3 +1,4 @@
+from django.db.models import QuerySet
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views import generic
@@ -10,6 +11,11 @@ class IndexView(generic.ListView):
     model = Task
     paginate_by = 5
     template_name = "todo/index.html"
+
+    def get_queryset(self) -> QuerySet:
+        queryset = super(IndexView, self).get_queryset()
+        queryset = queryset.prefetch_related("tag")
+        return queryset
 
 
 class TaskCreateView(generic.CreateView):
