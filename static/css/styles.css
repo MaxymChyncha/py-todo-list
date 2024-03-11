@@ -1,4 +1,11 @@
 .content-cell {
-  max-width: 250px; /* Задайте бажану максимальну ширину */
-  word-wrap: break-word; /* Це забезпечить перенос тексту на новий рядок у разі необхідності */
+  text-align: center;
+}
+
+.my-pagination {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
