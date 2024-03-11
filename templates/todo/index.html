@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>TODO List</h1>
+  {% if task_list %}
+    
+    <table class="table">
+      <tr>
+        <th>Content</th>
+        <th>Tags</th>
+        <th>Created at</th>
+        <th>Deadline</th>
+        <th>Status</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+      {% for task in task_list %}
+        <tr>
+          <td class="content-cell">
+            {{ task.content }} 
+            {% if task.status %}
+              <p style="color: green">Done</p>
+            {% else %}
+              <p style="color: red">Not Done</p>
+            {% endif %}
+          </td>
+          <td>
+            {% for tag in task.tag.all %}
+              {{ tag.name }}
+            {% endfor %}
+          </td>
+          <td>
+            {{ task.datetime }}
+          </td>
+          <td>
+            {{ task.deadline }}
+          </td>
+          <td>
+            {% if task.status %}
+              <a href="#">
+                Undo
+              </a>
+            {% else %}
+              <a href="#">
+                Complete
+              </a>
+            {% endif %}
+          </td>
+          <td>
+            <a href="#">
+              ⚙️
+            </a>
+          </td>
+          <td>
+            <a href="#">
+              🗑
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+    <p>There are no tasks yet!</p>
+  {% endif %}
+{% endblock %}
