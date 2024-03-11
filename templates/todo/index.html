@@ -38,11 +38,11 @@
           </td>
           <td>
             {% if task.status %}
-              <a href="#">
+              <a href="{% url 'todo:change-status' task.id %}">
                 Undo
               </a>
             {% else %}
-              <a href="#">
+              <a href="{% url 'todo:change-status' task.id %}">
                 Complete
               </a>
             {% endif %}
