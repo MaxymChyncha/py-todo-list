@@ -1,4 +1,5 @@
-from django.urls import reverse
+from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 
 from todo.forms import TaskForm
@@ -60,3 +61,10 @@ class TagDeleteView(generic.DeleteView):
 
     def get_success_url(self) -> str:
         return reverse("todo:tag-list")
+
+
+def change_task_status(request: HttpRequest, pk: int) -> HttpResponse:
+    task = Task.objects.get(pk=pk)
+    task.status = not task.status
+    task.save()
+    return HttpResponseRedirect(reverse_lazy("todo:index"))
