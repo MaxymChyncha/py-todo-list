@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <a style="float: right" href="{% url 'todo:task-create' %}" class="btn btn-primary link-to-page">
+    Add comment
+  </a>
+  <h1>TODO List</h1>
+
+  {% if task_list %}
+
+    <table class="table table-bordered">
+      <tr>
+        <th class="content-cell">Content</th>
+        <th class="content-cell">Tags</th>
+        <th class="content-cell">Created at</th>
+        <th class="content-cell">Deadline</th>
+        <th class="content-cell">Status</th>
+        <th class="content-cell">Update</th>
+        <th class="content-cell">Delete</th>
+      </tr>
+
+      {% for task in task_list %}
+        <tr>
+          <td class="content-cell">
+            {{ task.content }}
+            {% if task.status %}
+              <p style="color: green">Done</p>
+            {% else %}
+              <p style="color: red">Not Done</p>
+            {% endif %}
+          </td>
+          <td class="content-cell">
+            {% for tag in task.tag.all %}
+              {{ tag.name }}
+            {% endfor %}
+          </td>
+          <td class="content-cell">
+            {{ task.datetime }}
+          </td>
+          <td class="content-cell">
+            {% if task.deadline %}
+              {{ task.deadline }}
+            {% else %}
+              No deadlines
+            {% endif %}
+          </td>
+          <td class="content-cell">
+            {% if task.status %}
+              <a href="{% url 'todo:change-status' task.id %}" class="btn btn-secondary">
+                Undo
+              </a>
+            {% else %}
+              <a href="{% url 'todo:change-status' task.id %}" class="btn btn-primary" style="background-color: green">
+                Complete
+              </a>
+            {% endif %}
+          </td>
+          <td class="content-cell">
+            <a href="{% url 'todo:task-update' task.id %}">
+              ⚙️
+            </a>
+          </td>
+          <td class="content-cell">
+            <a href="{% url 'todo:task-delete' task.id %}">
+              🗑
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+    <p>There are no tasks yet!</p>
+  {% endif %}
+{% endblock %}

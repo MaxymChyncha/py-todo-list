@@ -1,0 +1,11 @@
+.content-cell {
+  text-align: center;
+}
+
+.my-pagination {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

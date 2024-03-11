@@ -1,0 +1,102 @@
+[
+  {
+    "model": "todo.tag",
+    "pk": 1,
+    "fields": {
+      "name": "English"
+    }
+  },
+  {
+    "model": "todo.tag",
+    "pk": 2,
+    "fields": {
+      "name": "Mate"
+    }
+  },
+  {
+    "model": "todo.tag",
+    "pk": 3,
+    "fields": {
+      "name": "Reading"
+    }
+  },
+  {
+    "model": "todo.task",
+    "pk": 1,
+    "fields": {
+      "content": "Record to English lesson",
+      "datetime": "2024-03-07T12:00:00Z",
+      "deadline": "2024-03-10T18:00:00Z",
+      "status": true,
+      "tag": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "todo.task",
+    "pk": 2,
+    "fields": {
+      "content": "Finish Django Practice",
+      "datetime": "2024-03-07T09:00:00Z",
+      "deadline": "2024-03-15T16:00:00Z",
+      "status": false,
+      "tag": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "todo.task",
+    "pk": 3,
+    "fields": {
+      "content": "Read a book",
+      "datetime": "2024-03-08T16:30:00Z",
+      "deadline": null,
+      "status": false,
+      "tag": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "todo.task",
+    "pk": 4,
+    "fields": {
+      "content": "Do topic 'DRF introduction'",
+      "datetime": "2024-03-09T10:00:00Z",
+      "deadline": null,
+      "status": false,
+      "tag": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "todo.task",
+    "pk": 5,
+    "fields": {
+      "content": "Learn 20 new words",
+      "datetime": "2024-03-10T07:00:00Z",
+      "deadline": null,
+      "status": false,
+      "tag": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "todo.task",
+    "pk": 6,
+    "fields": {
+      "content": "Buy a new book",
+      "datetime": "2024-03-08T07:00:00Z",
+      "deadline": null,
+      "status": false,
+      "tag": [
+        3
+      ]
+    }
+  }
+]
